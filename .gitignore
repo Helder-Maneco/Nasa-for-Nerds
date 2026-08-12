@@ -1,0 +1,16 @@
+# Dependências do Bundler
+nasa-nerds-backend/vendor/bundle/
+nasa-nerds-backend/.bundle/
+
+# Arquivos de variáveis de ambiente
+nasa-nerds-backend/.env
+
+# Variáveis de ambiente do Frontend
+*.env
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+
+# Não ignorar o exemplo/modelo
+!.env.example

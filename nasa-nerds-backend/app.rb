@@ -1,0 +1,29 @@
+require_relative 'config/environment.rb'
+require_relative 'services/nasa_service.rb'
+
+# Configuration the CORS
+use Rack::Cors do
+  allow do
+    origins '*'
+    resource '*', headers: :any, methods: [:get, :post, :options]
+  end
+end
+
+set :port, ENV.fetch('PORT', 4567)
+
+get '/api/asteroids' do
+  content_type :json
+  start_date = params[:start_date] || Time.now.strftime('%Y-%m-%d')
+  end_date = params[:end_date] || Time.now.strftime('%Y-%m-%d')
+
+  response = NasaService.fetch_asteroids(start_date, end_date)
+  response.body
+end
+
+get '/api/apod' do
+  content_type :json
+  date = params[:date]
+
+  response = NasaService.fetch_apod(date)
+  response.body
+end

@@ -1,10 +1,6 @@
 require_relative 'config/environment.rb'
 require_relative 'services/nasa_service.rb'
 
-# Configurações do Servidor
-set :bind, '0.0.0.0'
-set :port, ENV.fetch('PORT', 4567)
-
 # Configuration do CORS
 use Rack::Cors do
   allow do
@@ -13,7 +9,6 @@ use Rack::Cors do
   end
 end
 
-# Rota de Status (Health Check do Render)
 get '/' do
   content_type :json
   { status: 'online', message: 'API Nasa for Nerds rodando com sucesso!' }.to_json
@@ -35,3 +30,7 @@ get '/api/apod' do
   response = NasaService.fetch_apod(date)
   response.body
 end
+
+# FORÇA O SERVIDOR A ESCUTAR NA PORTA DO RENDER E MANTER O PROCESSO ATIVO
+port = ENV['PORT'] || 4567
+Rack::Handler::Puma.run(Sinatra::Application, Port: port, Host: '0.0.0.0')

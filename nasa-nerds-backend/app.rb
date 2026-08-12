@@ -1,7 +1,11 @@
 require_relative 'config/environment.rb'
 require_relative 'services/nasa_service.rb'
 
-# Configuration the CORS
+# Configurações do Servidor
+set :bind, '0.0.0.0'
+set :port, ENV.fetch('PORT', 4567)
+
+# Configuration do CORS
 use Rack::Cors do
   allow do
     origins '*'
@@ -9,7 +13,11 @@ use Rack::Cors do
   end
 end
 
-set :port, ENV.fetch('PORT', 4567)
+# Rota de Status (Health Check do Render)
+get '/' do
+  content_type :json
+  { status: 'online', message: 'API Nasa for Nerds rodando com sucesso!' }.to_json
+end
 
 get '/api/asteroids' do
   content_type :json

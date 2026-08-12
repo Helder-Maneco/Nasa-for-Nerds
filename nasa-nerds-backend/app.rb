@@ -30,7 +30,3 @@ get '/api/apod' do
   response = NasaService.fetch_apod(date)
   response.body
 end
-
-# FORÇA O SERVIDOR A ESCUTAR NA PORTA DO RENDER E MANTER O PROCESSO ATIVO
-port = ENV['PORT'] || 4567
-Rack::Handler::Puma.run(Sinatra::Application, Port: port, Host: '0.0.0.0')

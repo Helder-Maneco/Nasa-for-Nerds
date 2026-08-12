@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Helder-Maneco.github.io/nasa-nerds-frontend",
+  "homepage": "https://helder-maneco.github.io/Nasa-for-Nerds",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

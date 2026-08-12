@@ -13,4 +13,6 @@ nasa-nerds-backend/.env
 *.env.production.local
 
 # Não ignorar o exemplo/modelo
+node_modules
+dist
 !.env.example

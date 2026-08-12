@@ -1,4 +1,7 @@
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4567';
+// Detecta se está no GitHub Pages (produção) ou no PC (desenvolvimento)
+const API_BASE = import.meta.env.PROD 
+  ? 'https://seu-app-no-render.onrender.com' // <-- Cole aqui a URL gerada pelo Render
+  : 'http://localhost:4567';
 
 export async function fetchAsteroids(startDate: string, endDate: string) {
   const res = await fetch(`${API_BASE}/api/asteroids?start_date=${startDate}&end_date=${endDate}`);

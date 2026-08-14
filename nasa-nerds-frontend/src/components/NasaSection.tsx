@@ -67,7 +67,7 @@ export default function NasaSection() {
         <div className="text-center mb-10">
           <div
             style={{
-              color: '#6d5a9e',
+              color: '#4a6fb5',
               fontSize: '11px',
               letterSpacing: '0.3em',
               fontFamily: "'Share Tech Mono', monospace",
@@ -80,13 +80,13 @@ export default function NasaSection() {
             style={{
               fontFamily: "'Orbitron', monospace",
               fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-              color: '#c4b5fd',
-              textShadow: '0 0 20px rgba(196,181,253,0.3)',
+              color: '#dce6ff',
+              textShadow: '0 0 20px rgba(220,230,255,0.3)',
             }}
           >
             NASA FOR NERDS
           </h2>
-          <p style={{ color: '#6d5a9e', fontFamily: "'Share Tech Mono', monospace", fontSize: '13px', marginTop: '8px' }}>
+          <p style={{ color: '#4a6fb5', fontFamily: "'Share Tech Mono', monospace", fontSize: '13px', marginTop: '8px' }}>
             Near-Earth Objects · Astronomy Picture of the Day
           </p>
         </div>
@@ -99,7 +99,7 @@ export default function NasaSection() {
         >
           <label
             htmlFor="asteroid-date"
-            style={{ color: '#9c8fc9', fontFamily: "'Share Tech Mono', monospace", fontSize: '12px' }}
+            style={{ color: '#8fa8d9', fontFamily: "'Share Tech Mono', monospace", fontSize: '12px' }}
           >
             data:
           </label>
@@ -110,9 +110,9 @@ export default function NasaSection() {
             value={date}
             onChange={(e) => setDate(e.target.value)}
             style={{
-              background: '#0f0a1f',
-              border: '1px solid #2d1f52',
-              color: '#c4b5fd',
+              background: '#060c1e',
+              border: '1px solid #0b3d91',
+              color: '#dce6ff',
               fontFamily: "'Share Tech Mono', monospace",
               fontSize: '13px',
               padding: '8px 12px',
@@ -124,19 +124,19 @@ export default function NasaSection() {
             type="submit"
             style={{
               background: 'transparent',
-              border: '1px solid #a855f7',
-              color: '#a855f7',
+              border: '1px solid #3d8bfd',
+              color: '#3d8bfd',
               fontFamily: "'Orbitron', monospace",
               fontSize: '12px',
               padding: '8px 18px',
               borderRadius: '4px',
               cursor: 'pointer',
-              textShadow: '0 0 8px rgba(168,85,247,0.4)',
+              textShadow: '0 0 8px rgba(61,139,253,0.4)',
               transition: 'background 0.2s, box-shadow 0.2s',
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = 'rgba(168,85,247,0.1)';
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 20px rgba(168,85,247,0.2)';
+              (e.currentTarget as HTMLButtonElement).style.background = 'rgba(61,139,253,0.1)';
+              (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 20px rgba(61,139,253,0.2)';
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLButtonElement).style.background = 'transparent';
@@ -148,7 +148,7 @@ export default function NasaSection() {
         </form>
 
         {loading && (
-          <div style={{ textAlign: 'center', color: '#9c8fc9', fontFamily: "'Share Tech Mono', monospace", fontSize: '13px' }}>
+          <div style={{ textAlign: 'center', color: '#8fa8d9', fontFamily: "'Share Tech Mono', monospace", fontSize: '13px' }}>
             [ carregando dados da NASA... ]
           </div>
         )}
@@ -157,7 +157,7 @@ export default function NasaSection() {
           <div
             style={{
               textAlign: 'center',
-              color: '#ff4d6d',
+              color: '#fc3d21',
               fontFamily: "'Share Tech Mono', monospace",
               fontSize: '13px',
               textShadow: '0 0 8px rgba(255,77,109,0.3)',
@@ -175,16 +175,16 @@ export default function NasaSection() {
                 style={{
                   fontFamily: "'Orbitron', monospace",
                   fontSize: '14px',
-                  color: '#a855f7',
+                  color: '#3d8bfd',
                   marginBottom: '16px',
-                  textShadow: '0 0 8px rgba(168,85,247,0.3)',
+                  textShadow: '0 0 8px rgba(61,139,253,0.3)',
                 }}
               >
                 ▸ ASTEROIDES · {date}
               </div>
 
               {asteroids.length === 0 ? (
-                <p style={{ color: '#4a3d6b', fontFamily: "'Share Tech Mono', monospace", fontSize: '12px' }}>
+                <p style={{ color: '#24345c', fontFamily: "'Share Tech Mono', monospace", fontSize: '12px' }}>
                   Nenhum asteroide registrado para essa data.
                 </p>
               ) : (
@@ -192,7 +192,7 @@ export default function NasaSection() {
                   {asteroids.map((a) => {
                     const approach = a.close_approach_data[0];
                     const hazard = a.is_potentially_hazardous_asteroid;
-                    const color = hazard ? '#ff4d6d' : '#3b82f6';
+                    const color = hazard ? '#fc3d21' : '#0b3d91';
                     return (
                       <div
                         key={a.id}
@@ -203,7 +203,7 @@ export default function NasaSection() {
                           (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 20px ${color}15`;
                         }}
                         onMouseLeave={(e) => {
-                          (e.currentTarget as HTMLDivElement).style.borderColor = '#2d1f52';
+                          (e.currentTarget as HTMLDivElement).style.borderColor = '#0b3d91';
                           (e.currentTarget as HTMLDivElement).style.boxShadow = 'none';
                         }}
                       >
@@ -218,17 +218,17 @@ export default function NasaSection() {
                         >
                           {a.name}
                         </div>
-                        <p style={{ color: '#9c8fc9', fontSize: '11px', fontFamily: "'Share Tech Mono', monospace", lineHeight: 1.6 }}>
+                        <p style={{ color: '#8fa8d9', fontSize: '11px', fontFamily: "'Share Tech Mono', monospace", lineHeight: 1.6 }}>
                           diâmetro: ~{Math.round(a.estimated_diameter.meters.estimated_diameter_min)}–
                           {Math.round(a.estimated_diameter.meters.estimated_diameter_max)}m
                         </p>
                         {approach && (
-                          <p style={{ color: '#9c8fc9', fontSize: '11px', fontFamily: "'Share Tech Mono', monospace", lineHeight: 1.6 }}>
+                          <p style={{ color: '#8fa8d9', fontSize: '11px', fontFamily: "'Share Tech Mono', monospace", lineHeight: 1.6 }}>
                             distância: {Math.round(Number(approach.miss_distance.kilometers)).toLocaleString()} km ·{' '}
                             {Math.round(Number(approach.relative_velocity.kilometers_per_hour)).toLocaleString()} km/h
                           </p>
                         )}
-                        <p style={{ color: hazard ? '#ff4d6d' : '#4a3d6b', fontSize: '10px', fontFamily: "'Share Tech Mono', monospace", marginTop: '6px' }}>
+                        <p style={{ color: hazard ? '#fc3d21' : '#24345c', fontSize: '10px', fontFamily: "'Share Tech Mono', monospace", marginTop: '6px' }}>
                           {hazard ? '⚠ potencialmente perigoso' : 'sem risco identificado'}
                         </p>
                       </div>
@@ -245,9 +245,9 @@ export default function NasaSection() {
                   style={{
                     fontFamily: "'Orbitron', monospace",
                     fontSize: '14px',
-                    color: '#3b82f6',
+                    color: '#0b3d91',
                     marginBottom: '16px',
-                    textShadow: '0 0 8px rgba(59,130,246,0.3)',
+                    textShadow: '0 0 8px rgba(11,61,145,0.3)',
                   }}
                 >
                   ▸ ASTRONOMY PICTURE OF THE DAY
@@ -256,11 +256,11 @@ export default function NasaSection() {
                   className="panel overflow-hidden"
                   style={{ transition: 'border-color 0.3s, box-shadow 0.3s' }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = '#a855f744';
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 0 20px #a855f715';
+                    (e.currentTarget as HTMLDivElement).style.borderColor = '#3d8bfd44';
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 0 20px #3d8bfd15';
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = '#2d1f52';
+                    (e.currentTarget as HTMLDivElement).style.borderColor = '#0b3d91';
                     (e.currentTarget as HTMLDivElement).style.boxShadow = 'none';
                   }}
                 >
@@ -268,19 +268,19 @@ export default function NasaSection() {
                     <img src={apod.url} alt={apod.title} style={{ width: '100%', display: 'block' }} />
                   ) : (
                     <div style={{ padding: '16px' }}>
-                      <a href={apod.url} target="_blank" rel="noreferrer" style={{ color: '#a855f7' }}>
+                      <a href={apod.url} target="_blank" rel="noreferrer" style={{ color: '#3d8bfd' }}>
                         Ver mídia ({apod.media_type})
                       </a>
                     </div>
                   )}
                   <div style={{ padding: '12px 16px' }}>
-                    <div style={{ fontFamily: "'Orbitron', monospace", fontSize: '13px', color: '#c4b5fd', marginBottom: '6px' }}>
+                    <div style={{ fontFamily: "'Orbitron', monospace", fontSize: '13px', color: '#dce6ff', marginBottom: '6px' }}>
                       {apod.title}
                     </div>
-                    <p style={{ color: '#9c8fc9', fontSize: '11px', fontFamily: "'Share Tech Mono', monospace", lineHeight: 1.6, marginBottom: '8px' }}>
+                    <p style={{ color: '#8fa8d9', fontSize: '11px', fontFamily: "'Share Tech Mono', monospace", lineHeight: 1.6, marginBottom: '8px' }}>
                       {apod.explanation}
                     </p>
-                    <p style={{ color: '#4a3d6b', fontSize: '10px', fontFamily: "'Share Tech Mono', monospace" }}>
+                    <p style={{ color: '#24345c', fontSize: '10px', fontFamily: "'Share Tech Mono', monospace" }}>
                       {apod.date} {apod.copyright ? `· © ${apod.copyright}` : ''}
                     </p>
                   </div>

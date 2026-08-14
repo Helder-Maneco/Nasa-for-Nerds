@@ -22,7 +22,7 @@ export default function StarField() {
       baseAlpha: Math.random() * 0.6 + 0.3,
       twinkleSpeed: Math.random() * 0.02 + 0.005,
       phase: Math.random() * Math.PI * 2,
-      hue: Math.random() > 0.6 ? '196,181,253' : '168,85,247',
+      hue: Math.random() > 0.6 ? '220,230,255' : '61,139,253',
     }));
 
     let animationId: number;

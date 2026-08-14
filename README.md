@@ -21,18 +21,20 @@ O visual foi desenhado com um fundo de céu estrelado animado e uma paleta inspi
 
 ## 🧱 Arquitetura
 
+```
 Nasa-for-Nerds/
 ├── nasa-nerds-frontend/ → React + Vite + TypeScript + Tailwind
 └── nasa-nerds-backend/ → Ruby + Sinatra + Puma
-
+```
 
 O front-end **não fala diretamente com a API da NASA**. Toda requisição passa pelo backend em Ruby, que guarda a chave da NASA em variável de ambiente e nunca a expõe ao navegador.
 
+```
 ┌───────────────┐ fetch ┌────────────────────┐ HTTParty ┌───────────────┐
 │ Frontend │ ──────────────────► │ Backend (Ruby) │ ─────────────────────► │ NASA APIs │
 │ React + Vite │ ◄────────────────── │ Sinatra + Puma │ ◄───────────────────── │ api.nasa.gov │
 └───────────────┘ JSON └────────────────────┘ JSON └───────────────┘
-
+```
 
 ---
 

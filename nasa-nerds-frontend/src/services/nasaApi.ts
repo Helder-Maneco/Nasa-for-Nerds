@@ -1,7 +1,10 @@
-// Detecta se está no GitHub Pages (produção) ou no PC (desenvolvimento)
-const API_BASE = import.meta.env.PROD 
-  ? 'https://nasa-api-76ex.onrender.com/' // <-- Cole aqui a URL gerada pelo Render
-  : 'http://localhost:4567';
+const API_BASE = import.meta.env.VITE_API_URL;
+
+if (!API_BASE) {
+  throw new Error(
+    'VITE_API_URL não está definida. Configura-a em .env (produção) ou .env.development (local).'
+  );
+}
 
 export async function fetchAsteroids(startDate: string, endDate: string) {
   const res = await fetch(`${API_BASE}/api/asteroids?start_date=${startDate}&end_date=${endDate}`);

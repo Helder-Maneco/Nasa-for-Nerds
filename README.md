@@ -18,7 +18,10 @@
 O visual foi desenhado com um fundo de céu estrelado animado e uma paleta inspirada nas cores oficiais da NASA (azul, vermelho e branco).
 
 ---
+**Preview do Site**
+![Nasa-website](media/nasa.png)
 
+---
 ## 🧱 Arquitetura
 
 ```

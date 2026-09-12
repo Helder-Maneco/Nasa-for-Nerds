@@ -51,7 +51,15 @@ rescue NasaService::UpstreamError => e
   status 502
   { error: 'nasa_api_unreachable', message: e.message }.to_json
 end
-
+# Rota temporária de diagnóstico — remove depois de confirmarmos o CORS.
+get '/debug/env' do
+  content_type :json
+  {
+    RACK_ENV: ENV['RACK_ENV'].inspect,
+    APP_ENV: ENV['APP_ENV'].inspect,
+    RAILS_ENV: ENV['RAILS_ENV'].inspect
+  }.to_json
+end
 # Bundler.require (chamado via config/environment.rb) carrega o Sinatra
 # "por baixo" — isso faz o app_file que o Sinatra deteta automaticamente
 # apontar para config/environment.rb em vez de app.rb, então o arranque

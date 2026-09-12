@@ -2,12 +2,13 @@ require_relative 'config/environment.rb'
 require_relative 'services/nasa_service.rb'
 
 # Configuração do CORS
-# Em produção só o frontend publicado pode chamar a API; em desenvolvimento
-# aceitamos qualquer porta de localhost/127.0.0.1, porque o Vite muda de
-# porta sozinho (5173, 5174, ...) quando a porta padrão está ocupada.
+#
+# Nota: NÃO usamos ENV['RACK_ENV'] aqui — o Render define-a automaticamente
+# "production". Usamos antes ENV['RENDER'], que o Render garante sempre
+# como "true" nos seus serviços e nunca existe em localhost.
 use Rack::Cors do
   allow do
-    if ENV['RACK_ENV'] == 'production'
+    if ENV['RENDER'] == 'true'
       origins(*ENV.fetch('ALLOWED_ORIGIN', 'https://helder-maneco.github.io').split(','))
     else
       origins(/\Ahttps?:\/\/(localhost|127\.0\.0\.1)(:\d+)?\z/)
@@ -51,15 +52,7 @@ rescue NasaService::UpstreamError => e
   status 502
   { error: 'nasa_api_unreachable', message: e.message }.to_json
 end
-# Rota temporária de diagnóstico — remove depois de confirmarmos o CORS.
-get '/debug/env' do
-  content_type :json
-  {
-    RACK_ENV: ENV['RACK_ENV'].inspect,
-    APP_ENV: ENV['APP_ENV'].inspect,
-    RAILS_ENV: ENV['RAILS_ENV'].inspect
-  }.to_json
-end
+
 # Bundler.require (chamado via config/environment.rb) carrega o Sinatra
 # "por baixo" — isso faz o app_file que o Sinatra deteta automaticamente
 # apontar para config/environment.rb em vez de app.rb, então o arranque

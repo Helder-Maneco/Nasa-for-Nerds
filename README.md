@@ -60,6 +60,6 @@ O front-end **não fala diretamente com a API da NASA**. Toda requisição passa
 | Método | Rota | Descrição | Parâmetros |
 |---|---|---|---|
 | `GET` | `/api/asteroids` | Lista asteroides próximos da Terra | `start_date`, `end_date` (formato `YYYY-MM-DD`) |
-| `GET` | `/api/apod` | Imagem astronômica do dia | `date` *(opcional, formato `YYYY-MM-DD`)* |
+| `GET` | `/api/apod` | Imagem astronômica do dia | `date` *(formato `YYYY-MM-DD`)* |
 
 ---
